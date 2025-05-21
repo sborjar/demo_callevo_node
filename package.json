@@ -1,0 +1,13 @@
+{
+  "name": "demo-callevo-nodejs",
+  "version": "1.0.0",
+  "description": "CallEvo Api Restfull Demo",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Santiago Borja Romero",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "request": "^2.88.2"
+  }
+}

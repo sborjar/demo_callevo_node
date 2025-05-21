@@ -1,0 +1,14 @@
+.env
+
+*.csv
+*.txt
+*.wav
+
+testing.md
+testing.txt
+log.txt
+
+results/
+files/
+
+node_modules/
