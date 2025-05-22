@@ -2,6 +2,7 @@ require('dotenv').config();
 const {saveResponse} = require('../../util/function')
 var request = require('request');
 const path = require('path');
+const [current_file_name, current_file_method] = getFileNameMethod(path.basename(__filename));
 filename = path.basename(__filename).split(".");
 
 /**
