@@ -2,6 +2,12 @@ const fs = require('fs');
 
 const colors = [""]
 
+getFileNameMethod = (file) => {
+    only_name = file.split(".")[0]
+    method_file_name = only_name.split("-")[0].toUpperCase()
+    return [only_name, method_file_name]
+}
+
 saveResponse = (file='', method= '', url='', headers=null, params=null, response=null) => {
     folder = "./results"
 
@@ -57,4 +63,4 @@ saveResponse = (file='', method= '', url='', headers=null, params=null, response
 
 }
 
-module.exports = { saveResponse }
+module.exports = { saveResponse, getFileNameMethod }

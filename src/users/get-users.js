@@ -1,7 +1,8 @@
 require('dotenv').config();
-const {saveResponse} = require('../../util/function')
+const {saveResponse, getFileNameMethod} = require('../../util/function')
 var request = require('request');
-filename = path.basename(__filename).split(".");
+const path = require('path');
+const [current_file_name, current_file_method] = getFileNameMethod(path.basename(__filename));
 
 /**
  * Variables
@@ -20,11 +21,11 @@ let params = null
  * Process
  */
 
-request.get({url: url,headers: headers},
+request.get({url: url, json: params, headers: headers},
     function (error, response, body) {
         console.log(body)
-        if(response.statusCode == 200){
-            saveResponse(filename[0], "GET", url, headers, params, body);
+        if (response.statusCode == 200) {
+            saveResponse(current_file_name, current_file_method, url, headers, params, body);
         } else {
             console.log(error)
         }

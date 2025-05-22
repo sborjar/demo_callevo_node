@@ -1,30 +1,31 @@
 require('dotenv').config();
-const {saveResponse} = require('../../util/function')
+const {saveResponse, getFileNameMethod} = require('../../util/function')
 var request = require('request');
 const path = require('path');
-
-filename = path.basename(__filename).split(".");
+const [current_file_name, current_file_method] = getFileNameMethod(path.basename(__filename));
 
 /**
  * Variables
  */
 
-let url = `${process.env.API_PATH}users/15308`
+let url = `${process.env.API_PATH}users/15305`
+
 let headers =  {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${process.env.APP_TOKEN}`
 }
+
 let params = null
 
 /**
  * Process
  */
 
-request.get({url: url,headers: headers},
+request.get({url: url, json: params, headers: headers},
     function (error, response, body) {
         console.log(body)
-        if(response.statusCode == 200){
-            saveResponse(filename[0], "GET", url, headers, params, body);
+        if (response.statusCode == 200) {
+            saveResponse(current_file_name, current_file_method, url, headers, params, body);
         } else {
             console.log(error)
         }
