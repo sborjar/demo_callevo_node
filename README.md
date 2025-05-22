@@ -2,7 +2,8 @@
 
 Developer Tools
 
-![](https://img.shields.io/badge/Python-3.12-blue) 
+![](https://img.shields.io/badge/Node-v22.15.1-blue) 
+![](https://img.shields.io/badge/NPM-v10.9.2-blue) 
 
 ## Installation
 ### Option 1. Install 
