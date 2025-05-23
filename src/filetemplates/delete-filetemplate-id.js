@@ -1,27 +1,32 @@
-import requests
-import sys
-import os
-sys.path.insert(0, f'/workspaces/democallevo/')
-from utils.functions import saveMdFiles
-from dotenv import load_dotenv
-load_dotenv()
+require('dotenv').config();
+const {saveResponse, getFileNameMethod} = require('../../util/function')
+var request = require('request');
+const path = require('path');
+const [current_file_name, current_file_method] = getFileNameMethod(path.basename(__filename));
 
-url = f'{os.getenv("API_PATH")}file_template/1226'
+/**
+ * Variables
+ */
 
-headers = {
+let url = `${process.env.API_PATH}file_template/1241`
+
+let headers =  {
     'Content-Type': 'application/json',
-    'Authorization': f'Bearer {os.getenv("APP_TOKEN")}',
+    'Authorization': `Bearer ${process.env.APP_TOKEN}`
 }
-params =  None
 
-response = requests.delete(url, json=params, headers=headers)
+let params = null
 
-if response.status_code == 200:
-    print('Successful request')
-    print('Data:', response.json())
-    saveMdFiles("delete-filetemplate-id","DELETE",url,headers,params,response.json())
-else:
-    print('Error in the request, details:', response.text)
-    print('Details:')
-    print('Status Code:', response.status_code)
-    print(response)
+/**
+ * Process
+ */
+
+request.delete({url: url, json: params, headers: headers},
+    function (error, response, body) {
+        console.log(body)
+        if (response.statusCode == 200) {
+            saveResponse(current_file_name, current_file_method, url, headers, params, body);
+        } else {
+            console.log(error)
+        }
+    });         

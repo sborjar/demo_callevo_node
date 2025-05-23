@@ -1,0 +1,70 @@
+require('dotenv').config();
+const { saveResponse, getFileNameMethod } = require('../../util/function')
+var request = require('request');
+const path = require('path');
+const [current_file_name, current_file_method] = getFileNameMethod(path.basename(__filename));
+const fs = require('fs');
+const readline = require('readline');
+var axios = require('axios');
+
+
+/**
+ * Variables
+ */
+
+let url = `${process.env.API_PATH}make_template`
+
+let headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${process.env.APP_TOKEN}`,
+}
+
+/**
+ * Process
+ */
+params = null
+
+file_name = "import_pool3.csv";
+folder_path = `${process.cwd()}/files`;
+file_path = `${folder_path}/${file_name}`;
+
+if (!fs.existsSync(folder_path)) {
+    fs.mkdirSync(folder_path, 0o744);
+    console.log('Folder files does not exist, has been created !!!');
+    return
+}
+
+if (!fs.existsSync(file_path)) {
+    console.log('File does not exist !!!');
+    return
+}
+
+readF = async () => {
+    const fileStream = fs.createReadStream(file_path);
+    const rl = readline.createInterface({
+        input: fileStream,
+        crlfDelay: Infinity
+    });
+    for await (const line of rl) {
+        fileStream.close();
+        return line
+    }
+}
+
+readF()
+    .then(resp => {
+        console.log("file_header", resp)
+        params = {"file_header": resp}
+        axios.post(url,params,{headers})
+            .then(resp=>{
+                console.log(resp.data)
+                saveResponse(current_file_name, current_file_method, url, headers, params, resp.data);
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
