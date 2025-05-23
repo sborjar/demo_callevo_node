@@ -16,8 +16,8 @@ let headers = {
 }
 
 let params = {
-    "email": "agente3@demo.com",
-    "oldPassword": "*FzdnKhtV-",
+    "email": "agente4@demo.com",
+    "oldPassword": "*xMGaYjMf-",
     "newPassword": process.env.APP_PASS,
 }
 

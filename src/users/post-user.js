@@ -16,8 +16,8 @@ let headers = {
 }
 
 let params = {
-    "fullname": "Agente4",
-    "email": "agente4@demo.com",
+    "fullname": "AgenteNode4",
+    "email": "agenteNode4@demo.com",
     "usertype": 27,
     "language": "en",
 }
