@@ -7,6 +7,8 @@ Tools used in development
 
 ## Installation
 ### Option 1. Install 
+Download and install Nodejs from https://nodejs.org/en <br>
+Install dependencies
 ```
 npm install 
 ```
@@ -45,7 +47,7 @@ APP_TOKEN=<token>
 
 1. You must to select a route and group: Ex: `General/GET/appversion`
 2. Run
-```
+```c
 node /src/general/get-appversion.js
 ```
 3. Response
@@ -69,7 +71,7 @@ To start to dial you must following some steps:
 |Step|Description|Actions|Command to run|
 |---|---|---|---|
 |1|Callevo Administration gives you a token which you must paste into an environment variable file in the .env file. | [+Info](/doc/create_environment_file.md) ||
-|2|Create a users (agents/clickers) and obtain the `userid` <br>Ex: {..."message": 12} from response|[+Info](/doc/users.md)<br>[Edit](/src/users/post-user.js)|node src/users/post-user.js|
+|2|Create users (agents/clickers/administrators) and obtain `userid` for each one. <br>Ex: {..."message": 12} from response|[+Info](/doc/users.md)<br>[Edit](/src/users/post-user.js)|node src/users/post-user.js|
 |3|Collect user data by getting the `agent_code` and `agentid` field|[Edit](src/users/get-users-id.js)|node src/users/get-users-id.js|
 |4|Create a team and paste the `agent_code` into the interface field => "Agent/<agent_code>"|[+Info](/doc/teams.md)<br>[Edit](/src/teams/post-team.js)|node src/teams/post-team.js|
 |5|Collect team data by queue_id to get the `name` field, <br> Ex: `{..name: "q282fpqah33qky3s8egq90"}`|[Edit](/src/teams/get-teams-id.js)|node src/teams/get-teams-id.js|
