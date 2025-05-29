@@ -12,3 +12,5 @@ results/
 files/
 
 node_modules/
+
+test/
