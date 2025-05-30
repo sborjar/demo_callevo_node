@@ -24,7 +24,7 @@ let params = null
 request.post({url: url, headers: headers},
     function (error, response, body) {
         console.log(body)
-        if (response.statusCode == 200) {
+        if (response && response.statusCode == 200) {
             saveResponse(current_file_name, current_file_method, url, headers, params, body);
         } else {
             console.log(error)

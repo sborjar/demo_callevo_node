@@ -29,7 +29,7 @@ request.post({url: url, json: params, headers: headers},
     function (error, response, body) {
         let resp = JSON.stringify(body)
         console.log(resp)
-        if (response.statusCode == 200) {
+        if (response && response.statusCode == 200) {
             saveResponse(current_file_name, current_file_method, url, headers, params, resp);
         } else {
             console.log(error)

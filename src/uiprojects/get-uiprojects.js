@@ -8,22 +8,20 @@ const [current_file_name, current_file_method] = getFileNameMethod(path.basename
  * Variables
  */
 
-let url = `${process.env.API_PATH}timezone/1532`
+let url = `${process.env.API_PATH}uiprojects`
 
 let headers =  {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${process.env.APP_TOKEN}`
 }
 
-let params = {
-    h00: "Y"
-}
+let params = null
 
 /**
  * Process
  */
 
-request.put({url: url, json: params, headers: headers},
+request.get({url: url, json: params, headers: headers},
     function (error, response, body) {
         console.log(body)
         if (response && response.statusCode == 200) {
