@@ -8,7 +8,7 @@ const [current_file_name, current_file_method] = getFileNameMethod(path.basename
  * Variables
  */
 
-let url = `${process.env.API_PATH}phones?page=2&items=5`
+let url = `${process.env.API_PATH}uiproject/1069`
 
 let headers =  {
     'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ let params = null
  * Process
  */
 
-request.get({url: url, json: params, headers: headers},
+request.delete({url: url, json: params, headers: headers},
     function (error, response, body) {
         console.log(body)
         if (response && response.statusCode == 200) {
